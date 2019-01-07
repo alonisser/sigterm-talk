@@ -106,10 +106,16 @@ So besides "knowing" when death is upon us, what other design considerations our
 
 * We need some book keeping on what is processed in our app
 
-* We need a way to control incoming connections which is separate from processing connections
+* We need a way to control incoming connections which is separate from processing. So we can "process" while "closing"
 
 * Components need to expose an shutdown api - to be called on shutdown
- 
+
+---
+# The death of a process:
+
+* Respect the signal. Catching it, does not mean ignoring it. Usually ignoring sigterm would bring Sigkill eventually.  
+
+* Be careful with child processes. don't leave orphaned processes around. 
 ---
 # Signals
 
